@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid className="w-75">
       <Row className="row-cols-4 mt-5">
         {products &&
           products.map((products) => (
