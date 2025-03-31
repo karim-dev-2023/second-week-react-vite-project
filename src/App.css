@@ -1,4 +1,4 @@
 .card img {
   height: 15rem;
-  object-fit: fill;
+  object-fit:contain;
 }

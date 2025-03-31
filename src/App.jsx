@@ -20,7 +20,7 @@ function App() {
       <Row className="mt-5">
         {products &&
           products.map((products) => (
-            <Col key={products.id} sm={5} md={4} lg={3}>
+            <Col key={products.id} sm={5} md={4} lg={3} className="mt-3">
               <Card className="h-100">
                 <Card.Img
                   variant="top"
@@ -31,7 +31,7 @@ function App() {
                 <Card.Body>
                   <Card.Title>{products.title}</Card.Title>
                   <Card.Text>{products.description}</Card.Text>
-                  <Button variant="primary">{products.price} $</Button>
+                  <Card.Text variant="primary">{products.price} $</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
