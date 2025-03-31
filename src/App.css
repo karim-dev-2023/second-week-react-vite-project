@@ -1,15 +1,8 @@
-*{
-  margin: 0;
-  padding: 0;
-}
+
 .card img{
   height: 13rem;
 }
 .card{
   width: 18rem;
-}
-.rowClass{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  height: 27rem;
 }
