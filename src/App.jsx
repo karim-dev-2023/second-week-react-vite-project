@@ -17,11 +17,11 @@ function App() {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className="row-cols-4 mt-5">
         {products &&
           products.map((products) => (
-            <Col className="m-3">
-              <Card key={products.id}>
+            <Col  key={products.id} className="mb-3">
+              <Card className="h-100">
                 <Card.Img
                   variant="top"
                   src={products.image}
@@ -30,7 +30,7 @@ function App() {
                 />
                 <Card.Body>
                   <Card.Title>{products.title}</Card.Title>
-                  <Card.Text className="text-truncate ">
+                  <Card.Text >
                     {products.description}
                   </Card.Text>
                   <Button variant="primary">{products.price} $</Button>
