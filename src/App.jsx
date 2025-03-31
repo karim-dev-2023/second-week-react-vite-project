@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Button, Card } from "react-bootstrap/";
 
 function App() {
-  const [product, setProduct] = useState(null);
+  const [products, setProduct] = useState(null);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -16,22 +16,21 @@ function App() {
   }, []);
 
   return (
-    <Container fluid>
-      <Row style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-        {product &&
-          product.map((product) => (
-            <Card style={{ width: "18rem" }}>
+    <Container >
+      <Row className="rowClass">
+        {products &&
+          products.map((products) => (
+            <Card key={products.id}>
               <Card.Img
-                style={{ height: "13rem" }}
                 variant="top"
-                src={product.image}
-                alt={product.title}
+                src={products.image}
+                alt={products.title}
                 fluid
               />
               <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
-                <Card.Text className="text-truncate ">{product.description}</Card.Text>
-                <Button variant="primary">{product.price} $</Button>
+                <Card.Title>{products.title}</Card.Title>
+                <Card.Text className="text-truncate ">{products.description}</Card.Text>
+                <Button variant="primary">{products.price} $</Button>
               </Card.Body>
             </Card>
           ))}
