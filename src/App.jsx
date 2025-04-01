@@ -7,6 +7,7 @@ function App() {
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const result = "";
 
   useEffect(() => {
     async function fetchProduct() {
@@ -20,7 +21,10 @@ function App() {
         setProducts(data);
       } catch (error) {
         // Capture et stockage de l'erreur dans le state
-        setError(error.message);
+        setError(
+          "Une erreur c'est produite lors du chargement de la page merci de réesayer plus tars"
+        );
+        console.log(error.message);
       } finally {
         // Désactive l'état de chargement, qu'il y ait une erreur ou non
         setLoading(false);
@@ -49,14 +53,16 @@ function App() {
           category: "electronics",
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP ${response.status}`);
+      }
       const data = await response.json();
 
-      return alert(`Le produit avec l'id ${data.id} a été créé`);
+      alert(`Le produit avec l'id ${data.id} a été créé`);
     } catch (error) {
       console.log(error.message);
-      return alert(
-        `Un erreur c'est produite lors de la création`
-      );
+      alert(`Un erreur c'est produite lors de la création`);
     }
   }
   async function updateProduct(productId) {
@@ -78,14 +84,16 @@ function App() {
           }),
         }
       );
+
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP ${response.status}`);
+      }
       const data = await response.json();
 
-      return alert(`Le produit avec l'id ${data.id} a été mis à jour`);
+      alert(`Le produit avec l'id ${data.id} a été mis à jour`);
     } catch (error) {
       console.log(error.message);
-      return alert(
-        `Un erreur c'est produite lors de la mise à jour du produit`
-      );
+      alert(`Un erreur c'est produite lors de la mise à jour du produit`);
     }
   }
 
@@ -105,15 +113,17 @@ function App() {
         }
       );
 
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP ${response.status}`);
+      }
+
       const data = await response.json();
 
-      return alert(`Le prix avec l'id ${data.id} a été mis à jour`);
+      alert(`Le prix avec l'id ${data.id} a été mis à jour`);
     } catch (error) {
       console.log(error.message);
-      
-      return alert(
-        `Un erreur c'est produite lors de la mise à jour du prix `
-      );
+
+      alert(`Un erreur c'est produite lors de la mise à jour du prix `);
     }
   }
   async function deleteProduct(productId) {
@@ -124,14 +134,16 @@ function App() {
           method: "DELETE", // Indique qu'on supprime une ressource existante
         }
       );
+
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP ${response.status}`);
+      }
       const data = await response.json();
 
-      return alert(`Le produit avec l'id ${data.id} a été supprimé`);
+      alert(`Le produit avec l'id ${data.id} a été supprimé`);
     } catch (error) {
       console.log(error.message);
-      return alert(
-        `Un erreur c'est produite lors de la supression du produit `
-      );
+      alert(`Un erreur c'est produite lors de la supression du produit `);
     }
   }
 
